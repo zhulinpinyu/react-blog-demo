@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 
 import {fetchPosts} from '../actions/index'
 
@@ -11,15 +10,15 @@ class PostsIndex extends Component {
   }
 
   render(){
+    console.log(this.props.posts)
     return (
       <div>This is Posts List</div>
     )
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({fetchPosts},dispatch)
+function mapStateToProps({posts}){
+  return {posts}
 }
 
-
-export default connect(null,mapDispatchToProps)(PostsIndex)
+export default connect(mapStateToProps,{fetchPosts})(PostsIndex)
