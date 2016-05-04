@@ -4,8 +4,7 @@ export default class App extends Component {
     render(){
         return (
             <div>
-                Hi This is Starter
-                {this.props.children}
+              {this.props.children}
             </div>
         )
     }
