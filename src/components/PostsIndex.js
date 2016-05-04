@@ -10,21 +10,34 @@ class PostsIndex extends Component {
     this.props.fetchPosts()
   }
 
+  renderPosts(){
+    return this.props.posts.map((post) => {
+      return (
+        <li className="list-group-item" key={post.id}>
+          <div className="pull-xs-right">{post.categories}</div>
+          <strong>{post.title}</strong>
+        </li>
+      )
+    })
+  }
+
   render(){
-    console.log(this.props.posts)
     return (
       <div>
         <div className="text-xs-right">
           <Link to="posts/new" className="btn btn-primary">Add Post</Link>
         </div>
-        This is Posts List
+        <h3>Posts</h3>
+        <ul className="list-group">
+          {this.renderPosts()}
+        </ul>
       </div>
     )
   }
 }
 
 function mapStateToProps({posts}){
-  return {posts}
+  return {posts: posts.all}
 }
 
 export default connect(mapStateToProps,{fetchPosts})(PostsIndex)
